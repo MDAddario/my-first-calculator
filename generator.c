@@ -2,6 +2,8 @@
 #include <stdlib.h>
 #include <string.h>
 
+#define MAXINT 100
+
 int sum(int num1, int num2){
 	return num1 + num2;
 }
@@ -28,7 +30,7 @@ int main(){
 	
 	// Write introduction to code
 	fprintf(myfile, 
-	"%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s",
+	"%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%s%d%s%s%d%s%s%s%s%s%s%s%s%s%d%s%s%d%s%s%s%s%s%s%s",
 	"# Greet user \r\n",
 	"print('Welcome to my first calculator!') \r\n",
 	"print('All inputs are of the form: (integer) (operator) (integer).\\r\\n') \r\n",
@@ -48,8 +50,8 @@ int main(){
 	"    except ValueError: \r\n",
 	"        print('ERROR: First number is not an integer!') \r\n",
 	"        continue \r\n",
-	"    if num_1 < 0 or num_1 > 200: \r\n",
-	"        print('ERROR: First number must be between 0 and 200.') \r\n",
+	"    if num_1 < 0 or num_1 > ", MAXINT, ": \r\n",
+	"        print('ERROR: First number must be between 0 and ", MAXINT, ".') \r\n",
 	"        continue \r\n",
 	"\r\n",
 	"    try: \r\n",
@@ -57,8 +59,8 @@ int main(){
 	"    except ValueError: \r\n",
 	"        print('ERROR: Second number is not an integer!') \r\n",
 	"        continue \r\n",
-	"    if num_2 < 0 or num_2 > 200: \r\n",
-	"        print('ERROR: Second number must be between 0 and 200.') \r\n",
+	"    if num_2 < 0 or num_2 > ", MAXINT, ": \r\n",
+	"        print('ERROR: Second number must be between 0 and ", MAXINT, ".') \r\n",
 	"        continue \r\n",
 	"\r\n",
 	"    if oper not in operators: \r\n",
@@ -76,8 +78,8 @@ int main(){
 		// Operator filter
 		fprintf(myfile, "    if oper == operators[%d]: \r\n", i);
 		
-		for (int num1 = 0; num1 <= 200; num1++)
-			for (int num2 = 0; num2 <= 200; num2++){
+		for (int num1 = 0; num1 <= MAXINT; num1++)
+			for (int num2 = 0; num2 <= MAXINT; num2++){
 				fprintf(myfile, "        if num_1 == %d and num_2 == %d: \r\n", num1, num2);
 				fprintf(myfile, "            print('Answer: %d\\r\\n') \r\n", funcs[i](num1, num2));
 				fprintf(myfile, "            continue \r\n");
